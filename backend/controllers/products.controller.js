@@ -1,15 +1,12 @@
-const getAllProducts = async (req, res, next) => {};
-const addProduct = async (req, res, next) => {};
-const getProductById = async (req, res, next) => {};
-const updateProductById = async (req, res, next) => {};
-const deleteProductById = async (req, res, next) => {};
+const asyncWrapper = require("../utils/asyncWrapper.js");
+const createCRUDController = require("../utils/crudFactory.js");
 
-const productsController = {
-    getAllProducts,
-    addProduct,
-    getProductById,
-    updateProductById,
-    deleteProductById,
+const factory = createCRUDController("orders");
+
+module.exports = {
+    getAllProducts: asyncWrapper(factory.getAll),
+    getProductById: asyncWrapper(factory.getById),
+    addProduct: asyncWrapper(factory.create),
+    updateProductById: asyncWrapper(factory.updateById),
+    deleteProductById: asyncWrapper(factory.deleteById),
 };
-
-module.exports = productsController;

@@ -1,15 +1,12 @@
-const getAllSubscriptions = async (req, res, next) => {};
-const addSubscription = async (req, res, next) => {};
-const getSubscriptionById = async (req, res, next) => {};
-const updateSubscriptionById = async (req, res, next) => {};
-const deleteSubscriptionById = async (req, res, next) => {};
+const asyncWrapper = require("../utils/asyncWrapper.js");
+const createCRUDController = require("../utils/crudFactory.js");
 
-const subscriptionsController = {
-    getAllSubscriptions,
-    addSubscription,
-    getSubscriptionById,
-    updateSubscriptionById,
-    deleteSubscriptionById,
+const factory = createCRUDController("orders");
+
+module.exports = {
+    getAllSubscriptions: asyncWrapper(factory.getAll),
+    getSubscriptionById: asyncWrapper(factory.getById),
+    addSubscription: asyncWrapper(factory.create),
+    updateSubscriptionById: asyncWrapper(factory.updateById),
+    deleteSubscriptionById: asyncWrapper(factory.deleteById),
 };
-
-module.exports = subscriptionsController;

@@ -15,7 +15,9 @@
 
 ### What's done (4-6-2025):
 
--   ✅
--   ✅
--   ✅
--   ✅
+-   ✅ Crud Factory, that work for any table
+-   ✅ Orders, products, stores, subscriptions routes & controllers
+-   ✅ Basic Supabase JWT auth
+-   ✅ Auth Middleware
+-   ✅ Utility like CreateError class, and asyncWrapper function
+-   ✅ Error handler middleware
