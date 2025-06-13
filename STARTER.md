@@ -62,11 +62,24 @@ A **modular SaaS platform** combining essential e-commerce tools into one dashbo
 
 ### Must-Have Features (Phase 1)
 
--   [x] User auth & subscription check (via PayPal)
+#### Back-End
+
+-   [✅] User auth
+-   [✅] AI description & tag generator for products
+-   [✅] Dashboard to manually track orders, products, and revenue
+-   [x] Connect at least one store (Shopify or Etsy)
+-   [x] Exportable CSV reports for orders & revenue
+-   [x] Subscription check (via PayPal)
+-   [x] Subscription plan selector + checkout integration (PayPal)
+
+#### Front-End
+
+-   [x] User auth
 -   [x] AI description & tag generator for products
 -   [x] Dashboard to manually track orders, products, and revenue
 -   [x] Connect at least one store (Shopify or Etsy)
 -   [x] Exportable CSV reports for orders & revenue
+-   [x] Subscription check (via PayPal)
 -   [x] Subscription plan selector + checkout integration (PayPal)
 
 ### Nice-to-Have (Later)
@@ -84,13 +97,13 @@ A **modular SaaS platform** combining essential e-commerce tools into one dashbo
 
 ### Early MVP Phase (PayPal Only)
 
--   **Starter** – $15/month  
+-   **Starter** – $30/month  
     → 1 connected store, basic AI tools, manual dashboard
 
--   **Pro** – $30/month  
+-   **Pro** – $70/month  
     → 3 stores, AI tools + analytics, exports, limited support
 
--   **Business** – $50/month  
+-   **Business** – $100/month  
     → 10 stores, full analytics suite, team access, priority support
 
 ---
@@ -111,8 +124,8 @@ A **modular SaaS platform** combining essential e-commerce tools into one dashbo
 
 | Plan              | Users    | Price | Revenue  |
 | ----------------- | -------- | ----- | -------- |
-| Pro               | 15 users | $30   | $450     |
-| Business          | 5 users  | $50   | $250     |
+| Basic             | 15 users | $30   | $450     |
+| Pro               | 5 users  | $50   | $250     |
 | **Monthly Total** | -        | -     | **$700** |
 
 ### Projected Profit:

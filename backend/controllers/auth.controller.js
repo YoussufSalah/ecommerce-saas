@@ -1,28 +1,24 @@
-const { supabase } = require("../config/supabaseClient.js");
-const createError = require("../utils/createError.js");
-
+const supabase = require("../config/supabaseClient.js");
+const CreateError = require("../utils/createError.js");
 const register = async (req, res, next) => {
     const { email, password } = req.body;
 
     const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+            data: {
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                phone: req.body.phone,
+                avatar_url: req.body.avatar_url,
+            },
+        },
     });
 
-    if (error) return next(createError(400, error.message));
+    if (error) return next(new CreateError(400, error.message));
 
     const user = data.user;
-
-    const { error: insertError } = await supabase.from("users").insert([
-        {
-            id: user.id,
-            email: user.email,
-            role: "seller",
-            store_id: null,
-        },
-    ]);
-
-    if (insertError) return next(createError(500, insertError.message));
 
     res.status(201).json({
         message: "User registered successfully",
@@ -38,7 +34,7 @@ const login = async (req, res, next) => {
         password,
     });
 
-    if (error) return next(createError(400, error.message));
+    if (error) return next(new CreateError(400, error.message));
 
     res.status(200).json({
         message: "Login successful",

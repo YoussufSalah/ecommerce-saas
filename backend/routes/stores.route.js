@@ -6,7 +6,7 @@ router
     .get(storesController.getAllStores)
     .post(storesController.addStore);
 router
-    .route("/:storeId")
+    .route("/:id")
     .get(storesController.getStoreById)
     .patch(storesController.updateStoreById)
     .delete(storesController.deleteStoreById);

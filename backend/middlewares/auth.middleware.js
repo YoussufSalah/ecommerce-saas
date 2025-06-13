@@ -1,24 +1,37 @@
 const jwt = require("jsonwebtoken");
-const createError = require("../utils/createError.js");
+const CreateError = require("../utils/createError.js");
+const supabase = require("../config/supabaseClient.js");
 
-const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET;
-
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-        return next(createError(401, "No token provided"));
+        return next(new CreateError(401, "No token provided"));
     }
 
     const token = authHeader.split(" ")[1];
 
     try {
-        const decoded = jwt.verify(token, SUPABASE_JWT_SECRET);
+        const decoded = jwt.decode(token);
 
-        req.user = decoded;
+        if (!decoded || !decoded.email) {
+            return next(new CreateError(401, "Invalid token payload"));
+        }
+
+        const { data: user, error: fetchUserError } = await supabase
+            .from("users")
+            .select("id, first_name, last_name, role_id, email")
+            .eq("email", decoded.email)
+            .single();
+
+        if (!user || fetchUserError) {
+            return next(new CreateError(404, "User Not Found!"));
+        }
+
+        req.user = user;
         next();
     } catch (err) {
-        return next(createError(401, "Invalid token"));
+        return next(new CreateError(401, "Invalid token"));
     }
 };
 

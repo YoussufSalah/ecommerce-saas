@@ -6,7 +6,7 @@ router
     .get(subscriptionsController.getAllSubscriptions)
     .post(subscriptionsController.addSubscription);
 router
-    .route("/:subscriptionId")
+    .route("/:id")
     .get(subscriptionsController.getSubscriptionById)
     .patch(subscriptionsController.updateSubscriptionById)
     .delete(subscriptionsController.deleteSubscriptionById);
