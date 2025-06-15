@@ -7,6 +7,7 @@ const subscriptionsRoute = require("./subscriptions.route.js");
 const usersRoute = require("./users.route.js");
 const paymentsRoute = require("./payments.route.js");
 const revenueRoute = require("./revenue.route.js");
+const storeIntegrationRoute = require("./storeIntegration.route.js");
 const authRoute = require("./auth.route.js");
 
 const authMiddleware = require("../middlewares/auth.middleware.js");
@@ -18,6 +19,7 @@ router.use("/subscriptions/", authMiddleware, subscriptionsRoute);
 router.use("/users/", authMiddleware, usersRoute);
 router.use("/payments/", authMiddleware, paymentsRoute);
 router.use("/revenue/", authMiddleware, revenueRoute);
+router.use("/store-integration/", storeIntegrationRoute);
 router.use("/auth", authRoute);
 
 module.exports = router;

@@ -67,7 +67,7 @@ A **modular SaaS platform** combining essential e-commerce tools into one dashbo
 -   [✅] User auth
 -   [✅] AI description & tag generator for products
 -   [✅] Dashboard to manually track orders, products, and revenue
--   [x] Connect at least one store (Shopify or Etsy)
+-   [✅] Connect at least one store (Shopify or Etsy)
 -   [x] Exportable CSV reports for orders & revenue
 -   [x] Subscription check (via PayPal)
 -   [x] Subscription plan selector + checkout integration (PayPal)
